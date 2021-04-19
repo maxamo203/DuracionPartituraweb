@@ -1,0 +1,33 @@
+body{
+    background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(56, 98, 133));
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+h1{
+    margin-bottom: 2rem;
+}
+#salida{
+    margin-top: 2em;
+}
+input{
+    background-color: rgb(192, 201, 229);
+    border-radius: 5px;
+    border: none;
+    width: 20em;
+
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+label{
+    margin: 5px;
+}
+.entrada{
+    border: 5px dashed rgb(206, 206, 206);
+    display: inline-block;
+}
