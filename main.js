@@ -1,28 +1,36 @@
+
 var cantidadEntrdas = 1;
 function calcularTiempo(){
-    let velocidad = parseInt(document.querySelector('.velocidad').value);
-    let cant_compases = parseInt(document.querySelector('.c_compases').value);
-    let cant_tiempos = parseInt(document.querySelector('.c_tiempos').value);
-    let cant_pentagramas = parseInt(document.querySelector('.c_pentagramas').value);
-    let cant_compases_repetidos = parseInt(document.querySelector('.c_compases_repetidos').value);
-    let cant_compases_extras = parseInt(document.querySelector('.c_compases_extras').value);
-    if (velocidad > 0 && cant_compases > 0 && cant_tiempos > 0 && cant_pentagramas > 0 && cant_compases_repetidos >= 0 && cant_compases_extras >= 0){
-        var tiempo = 0;
-        velocidad = 3600/velocidad/60;
-        cant_compases *= cant_pentagramas;
-        cant_compases += cant_compases_repetidos + cant_compases_extras;
-        for(var i = 0; i < cant_compases;i++){
-            for(var j = 0; j < cant_tiempos; j++){
-                tiempo += velocidad;
-            }
-        }
-        document.querySelector("#salida").innerHTML = "La partitura dura " + sexagecimal_lenguaje(decimal_sexagecimal(tiempo));
-    }
-    else{
-        alert("Deben ser mayor que 0")
-    }
-    //document.write("La partitura dura " + sexagecimal_lenguaje(decimal_sexagecimal(tiempo)) )
+    'use strict'
+    let long = document.getElementsByClassName('velocidad').length;
     
+    var tiempo = 0;
+    for(var i = 0;i < long; i++){
+        
+        var velocidad = parseFloat(document.getElementsByClassName('velocidad')[i].value);
+        var cant_compases = parseFloat(document.getElementsByClassName('c_compases')[i].value);
+        var cant_tiempos = parseFloat(document.getElementsByClassName('c_tiempos')[i].value);
+        var cant_pentagramas = parseFloat(document.getElementsByClassName('c_pentagramas')[i].value);
+        var cant_compases_repetidos =parseFloat(document.getElementsByClassName('c_compases_repetidos')[i].value);
+        var cant_compases_extras = parseFloat(document.getElementsByClassName('c_compases_extras')[i].value);
+        if (velocidad > 1 || cant_compases > 1 )/*etc*/{
+            
+            velocidad = 60/velocidad;
+            cant_compases = cant_compases * cant_pentagramas;
+            cant_compases += cant_compases_repetidos + cant_compases_extras;
+
+            for(var a = 0; a < cant_compases;a++){
+                for(var b = 0; b < cant_tiempos; b++){
+                    tiempo += velocidad;
+                }
+            }
+            document.querySelector("#salida").innerHTML = "La partitura dura " + sexagecimal_lenguaje(decimal_sexagecimal(tiempo));
+        }
+        else{
+            alert("Deben ser mayor que 0");
+        } 
+    }
+     
 }
 function decimal_sexagecimal(segs){
     segs = parseInt(segs);
@@ -62,6 +70,13 @@ function agregarParametro(){
     var copia = original.cloneNode(true);
     var destino = document.getElementById("contenedor");
     destino.appendChild(copia);
+    var velocidad = destino.getElementsByClassName("velocidad")[destino.getElementsByClassName("velocidad").length - 1].value = "";
+    var compases = destino.getElementsByClassName("c_compases")[destino.getElementsByClassName("c_compases").length - 1].value = "";
+    var tiempos = destino.getElementsByClassName("c_tiempos")[destino.getElementsByClassName("c_tiempos").length - 1].value = "";
+    var pentagramas = destino.getElementsByClassName("c_pentagramas")[destino.getElementsByClassName("c_pentagramas").length - 1].value = 1;
+    var repetidos = destino.getElementsByClassName("c_compases_repetidos")[destino.getElementsByClassName("c_compases_repetidos").length - 1].value = 0;
+    var extras = destino.getElementsByClassName("c_compases_extras")[destino.getElementsByClassName("c_compases_extras").length - 1].value = 0;
+
     cantidadEntrdas++;
     if (cantidadEntrdas > 1){
         document.getElementById("quitar").setAttribute("style", "display: auto");
