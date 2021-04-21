@@ -1,5 +1,5 @@
 body{
-    background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(56, 98, 133));
+    background: linear-gradient(to bottom, rgb(56, 98, 133), rgb(0,0,0));
     background-attachment: fixed;
     color: white;
     font-family: 'Open Sans Condensed', sans-serif;
@@ -9,6 +9,7 @@ body{
 h1{
     margin-bottom: 2rem;
 }
+
 #salida{
     margin-top: 2em;
 }
@@ -28,6 +29,9 @@ label{
     margin: 5px;
 }
 .entrada{
-    border: 5px dashed rgb(206, 206, 206);
+    border: 5px solid rgb(206, 206, 206);
     display: inline-block;
+    
+   /*  margin-right: 7px; */
+    
 }
